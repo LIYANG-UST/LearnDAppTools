@@ -12,11 +12,35 @@ contract DapptutorialTest is DSTest {
         dapptutorial = new Dapptutorial();
     }
 
-    function testFail_basic_sanity() public {
-        assertTrue(false);
+    function test_withdraw() public {
+        payable(address(dapptutorial)).transfer(1 ether);
+        uint256 preBalance = address(this).balance;
+
+        dapptutorial.withdraw(42);
+
+        uint256 postBalance = address(this).balance;
+
+        assertEq(preBalance + 1 ether, postBalance);
     }
 
-    function test_basic_sanity() public {
-        assertTrue(true);
+    function testFail_withdraw_wrong_pass() public {
+        payable(address(dapptutorial)).transfer(1 ether);
+        uint256 preBalance = address(this).balance;
+
+        dapptutorial.withdraw(1);
+
+        uint256 postBalance = address(this).balance;
+
+        assertEq(preBalance + 1 ether, postBalance);
     }
+
+    function proveFail_withdraw(uint256 guess) public {
+        payable(address(dapptutorial)).transfer(1 ether);
+        uint256 preBalance = address(this).balance;
+        dapptutorial.withdraw(guess);
+        uint256 postBalance = address(this).balance;
+        assertEq(preBalance + 1 ether, postBalance);
+    }
+
+    receive() external payable {}
 }
