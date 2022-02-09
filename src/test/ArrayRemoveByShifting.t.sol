@@ -2,7 +2,7 @@
 pragma solidity ^0.8.6;
 
 import "ds-test/test.sol";
-import "./ArrayRemoveByShifting.sol";
+import "../ArrayRemoveByShifting.sol";
 
 contract TestArrayShift is ArrayRemoveByShifting, DSTest {
     uint256[] copy;

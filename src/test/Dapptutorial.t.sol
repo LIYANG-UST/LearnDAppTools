@@ -3,7 +3,7 @@ pragma solidity ^0.8.6;
 
 import "ds-test/test.sol";
 
-import "./Dapptutorial.sol";
+import "../Dapptutorial.sol";
 
 contract DapptutorialTest is DSTest {
     Dapptutorial dapptutorial;
